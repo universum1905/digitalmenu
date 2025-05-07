@@ -201,6 +201,8 @@
       <option value="Masa 1 / Table 1">Masa 1 / Table 1</option>
       <option value="Masa 2 / Table 2">Masa 2 / Table 2</option>
       <option value="Masa 3 / Table 3">Masa 3 / Table 3</option>
+      <option value="Masa 4 / Table 4">Masa 4 / Table 4</option>
+      <option value="Masa 5 / Table 5">Masa 5 / Table 5</option>
     </select>
     <br/><br/>
     <button class="select-btn" onclick="submitOrder()">📩 Siparişi Gönder / Submit Order</button>
@@ -209,8 +211,16 @@
   <script>
     const products = {
       bounty: [
-        { name: "Mediterrane Bowl", price: 120, ingredients: "Falafel, Couscous, Hummus", img: "Bilder/freshegebowls.png" },
-        { name: "Vegane Bowl", price: 135, ingredients: "Tofu, Edamame, Tahin", img: "Bilder/bowl2.png" }
+        { name: "Fresh Ege Bowl", price: 330, ingredients: "Yeşil salata, roka, domates, salatalık, kırmızı soğan, beyaz peynir, kruton ekmek, özel sos", img: "Bilder/freshegebowl.png" },
+        { name: "Sezar Bowl", price: 345, ingredients: "Göbek marul, sezar sos, kruton ekmek, cherry domates, özel soslu tavuk", img: "Bilder/sezarbowl.png" },
+        { name: "Ton Balıklı Bowl", price: 340, ingredients: "Yeşil salata, ton balığı, mısır, kornişon turşu, kruton ekmek, özel sos", img: "Bilder/tonbaliklibowl.png" },
+{ name: "Köri Soslu Bowl", price: 360, ingredients: "Köri sos, ızgara tavuk, kabarık pirinç, salata", img: "Bilder/korisoslubowl.png" },
+{ name: "Çıtır Tavuk Bowl", price: 360, ingredients: "Pilav, çıtır tavuk, salata, pembe sultan, kuru cacık, özel sos", img: "Bilder/citirtavukbowl.png" },
+{ name: "Sportif Bowl", price: 360, ingredients: "Pirinç, ızgara tavuk, salata", img: "Bilder/sportifbowl.png" },
+{ name: "Falafel Bowl", price: 315, ingredients: "Yeşil salata, falafel, haydari, pembe sultan, kornişon turşu, beyaz peynir, kokteyl zeytin, özel pancar sos", img: "Bilder/falafelbowl.png" },
+{ name: "Misket Köfte Bowl", price: 385, ingredients: "Misket köfte, baby patates, kuru cacık ve salsa", img: "Bilder/misketkoftebowl.png" },
+{ name: "Meksikan Bowl", price: 375, ingredients: "Meksika fasulyesi, yesil salata, mısır, kornişon turşu, dereotu, havuç, kırmızı acılı biber sos, çıtır kruton, özel sos", img: "Bilder/meksikanbowl.png" },
+{ name: "Somon Bowl", price: 410, ingredients: "Somon, pilav, akdeniz yeşillikleri, roka, pancar tarator, kapya biber, mısır, top kırmızı biber, ballı hardal sos", img: "Bilder/somunbowl.png" },
       ],
       meze: [
         { name: "Humus", price: 60, ingredients: "Kichererbsen, Tahin", img: "Bilder/humus.png" }

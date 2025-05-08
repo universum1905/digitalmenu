@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meze Aydın Menü</title>
+  <title>Menü / Menu</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@
     }
 
     header img {
-      height: 90px;
+      height: 60px;
     }
 
     h1 {
@@ -37,27 +37,29 @@
     .category-box {
       width: 45%;
       aspect-ratio: 1 / 1;
-      background-size: cover;
-      background-position: center;
+      background-color: white;
       border-radius: 20px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
       position: relative;
       cursor: pointer;
       overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
     }
 
-    .category-box .category-title {
-      background-color: rgba(255,255,255,0.8);
+    .category-box img {
+      width: 70%;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .category-title {
+      position: absolute;
+      bottom: 15px;
       width: 100%;
       font-size: 18px;
       font-weight: bold;
-      padding: 10px 0;
-      position: absolute;
-      bottom: 0;
     }
 
     .back-btn {
@@ -165,24 +167,27 @@
   </div>
 
   <div class="categories" id="category-view">
-    <div class="category-box" onclick="showCategory('bounty')" style="background-image: url('Bilder/bowl1.png');">
+    <div class="category-box" onclick="showCategory('bounty')">
+      <img src="Bilder/bowl1.png" alt="Bounty" />
       <div class="category-title">🥗 Bounty Bowls</div>
     </div>
-    <div class="category-box" onclick="showCategory('meze')" style="background-image: url('Bilder/humus.png');">
+    <div class="category-box" onclick="showCategory('meze')">
+      <img src="Bilder/humus.png" alt="Meze" />
       <div class="category-title">🍽️ Meze</div>
     </div>
-    <div class="category-box" onclick="showCategory('icecekler')" style="background-image: url('Bilder/ayran.png');">
+    <div class="category-box" onclick="showCategory('icecekler')">
+      <img src="Bilder/ayran.png" alt="Drinks" />
       <div class="category-title">🥤 İçecekler / Drinks</div>
     </div>
-    <div class="category-box" onclick="showCategory('diger')" style="background-image: url('Bilder/borek.png');">
+    <div class="category-box" onclick="showCategory('diger')">
+      <img src="Bilder/borek.png" alt="Others" />
       <div class="category-title">🍴 Diğer / Others</div>
     </div>
-    <div class="category-box" onclick="showCategory('tatli')" style="background-image: url('Bilder/baklava.png');">
+    <div class="category-box" onclick="showCategory('tatli')">
+      <img src="Bilder/baklava.png" alt="Desserts" />
       <div class="category-title">🍰 Tatlı / Desserts</div>
     </div>
   </div>
-
-
 
   <div id="products"></div>
 

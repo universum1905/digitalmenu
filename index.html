@@ -320,6 +320,11 @@ localStorage.setItem("cart", JSON.stringify(cart));
       if (cart.length === 0) return alert("Sepet boş / Cart is empty.");
 
       let message = "*📋 Sipariş / Order (Lütfen mesajı değiştirmeyin / Do not change this message)*\n";
+
+const now = new Date();
+const timestamp = `SIP${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
+
+      
       message += `*🪑 Masa / Table:* ${table}\n\n`;
 
       const grouped = {};
@@ -335,6 +340,8 @@ localStorage.setItem("cart", JSON.stringify(cart));
 
       const total = cart.reduce((sum, item) => sum + item.price, 0);
       message += `\n*💶 Toplam / Total:* ${total} TL`;
+
+      message += `\n🕓 ${timestamp}`;
 
       const phone = "905526516268";
       const encodedMessage = encodeURIComponent(message);

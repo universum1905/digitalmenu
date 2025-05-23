@@ -186,6 +186,12 @@
 
   <div id="products"></div>
 
+  <!-- ganz unten, vor dem Warenkorb -->
+  <div id="back-button-container-bottom" style="display:none; margin: 15px 0 10px 0; padding-left: 10px;">
+    <button class="back-btn" onclick="goBack()">⬅ Geri / Back</button>
+  </div>
+
+
   <div id="cart">
     <h2>🛒 Sepet / Cart</h2>
     <ul id="cart-items" style="list-style: none; padding: 0;"></ul>
@@ -320,6 +326,7 @@ window.onload = function () {
     function showCategory(cat) {
       document.getElementById("category-view").style.display = "none";
       document.getElementById("back-button-container").style.display = "block";
+      document.getElementById("back-button-container-bottom").style.display = "block";  // neu
 
       const container = document.getElementById("products");
       container.innerHTML = "";
@@ -350,6 +357,7 @@ window.onload = function () {
       document.getElementById("category-view").style.display = "flex";
       document.getElementById("products").innerHTML = "";
       document.getElementById("back-button-container").style.display = "none";
+      document.getElementById("back-button-container-bottom").style.display = "none";  // neu
     }
 
     function addToCart(product, qtyId) {
@@ -411,7 +419,7 @@ const timestamp = `SIP${now.getFullYear()}${(now.getMonth()+1).toString().padSta
 
       message += `\n🕓 ${timestamp}`;
 
-      const phone = "905526516268";
+      const phone = "905334226393";
       const encodedMessage = encodeURIComponent(message);
       const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
       window.open(whatsappURL, "_blank");

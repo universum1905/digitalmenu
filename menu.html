@@ -9,7 +9,7 @@
       --primary-color: #5a3e85;
       --accent-color: #4CAF50;
       --highlight-color: #ffe8a1;
-      --light-bg: #a95529; /* güncellendi: kahverengi arka plan */
+      --light-bg: #a34f2e; /* güncellendi: kahverengi arka plan */
       --card-bg: #ffffff;
       --text-color: #333;
     }
@@ -26,19 +26,9 @@
       padding: 0;
     }
 
-    header {
-      background-color: #fffaf4;
-      padding: 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    header img.header-banner {
+      .header-banner {
       width: 100%;
-      max-height: 140px;
-      object-fit: cover;
+      height: auto;
       display: block;
     }
 
@@ -56,38 +46,38 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 16px;
-      margin: 20px 0;
+      gap: 20px;
+      margin: 20px;
     }
 
     .category-box {
-      width: 42%;
-      background-size: cover;
-      background-position: center;
-      border-radius: 18px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      cursor: pointer;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      aspect-ratio: 1 / 1;
+      background-color: #fff;
+      text-align: center;
+      transition: transform 0.3s;
     }
 
     .category-box:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transform: scale(1.02);
     }
 
-    .category-title {
-      background: rgba(255, 255, 255, 0.85);
-      font-weight: bold;
-     font-size: 15px;
+    .category-box img {
       width: 100%;
-      padding: 8px;
-      text-align: center;
-      color: #3b2d2d;
+      height: auto;
+      display: block;
+    }
+
+    
+    .category-title {
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #fff9f5;
+      color: #5a3e2b;
     }
 
     .back-btn {
@@ -238,20 +228,25 @@
     <button class="back-btn" onclick="goBack()">⬅ Geri / Back</button>
   </div>
 
-  <div class="categories" id="category-view">
-    <div class="category-box" onclick="showCategory('bounty')" style="background-image: url('Bilder/bowl1.png');">
+ <div class="categories">
+    <div class="category-box" onclick="showCategory('bounty')">
+      <img src="Bilder/freshegebowl.png" alt="Bounty Bowls" />
       <div class="category-title">🥗 Bounty Bowls</div>
     </div>
-    <div class="category-box" onclick="showCategory('meze')" style="background-image: url('Bilder/manca.png');">
+    <div class="category-box" onclick="showCategory('meze')">
+      <img src="Bilder/manca.png" alt="Meze" />
       <div class="category-title">🍽️ Meze</div>
     </div>
-    <div class="category-box" onclick="showCategory('icecekler')" style="background-image: url('Bilder/cola.png');">
+    <div class="category-box" onclick="showCategory('icecekler')">
+      <img src="Bilder/cola.png" alt="İçecekler" />
       <div class="category-title">🥤 İçecekler / Drinks</div>
     </div>
-    <div class="category-box" onclick="showCategory('diger')" style="background-image: url('Bilder/cigkofte.png');">
+    <div class="category-box" onclick="showCategory('diger')">
+      <img src="Bilder/cigkofte.png" alt="Diğer" />
       <div class="category-title">🍴 Diğer / Others</div>
     </div>
-    <div class="category-box" onclick="showCategory('tatli')" style="background-image: url('Bilder/kabaktatlisi.png');">
+    <div class="category-box" onclick="showCategory('tatli')">
+      <img src="Bilder/kabaktatlisi.png" alt="Tatlı" />
       <div class="category-title">🍰 Tatlı / Desserts</div>
     </div>
   </div>

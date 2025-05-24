@@ -1,76 +1,119 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hoş Geldiniz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      background-color: black;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
       display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-      position: relative;
-      overflow: hidden;
     }
 
-    video {
-      max-width: 100%;
-      max-height: 100vh;
-      display: none;
-    }
-
-    #startButton {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 20px;
-      padding: 14px 28px;
-      background-color: #5a3e85;
+    .half {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       color: white;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .left {
+      background-image: url("Atom.png");
+    }
+
+    .right {
+      background-image: url("freshegebowl.png");
+    }
+
+    .logo {
+      width: 120px;
+      height: auto;
+      background-color: white;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    .overlay-text {
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .footer h2 {
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
+    }
+
+    .menu-btn {
+      padding: 14px 30px;
+      font-size: 18px;
+      background-color: #4CAF50;
       border: none;
       border-radius: 8px;
+      color: white;
       cursor: pointer;
-      z-index: 2;
+      transition: 0.3s;
+    }
+
+    .menu-btn:hover {
+      background-color: #388e3c;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .footer {
+        position: relative;
+        bottom: auto;
+        transform: none;
+        margin: 20px 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <video id="welcomeVideo" playsinline>
-    <source src="Video/hosgeldiniz.mp4" type="Video/mp4">
-    Tarayıcınız video etiketini desteklemiyor.
-  </video>
+  <div class="container">
+    <div class="half left">
+      <img src="logo-left.png" alt="Meze Aydın" class="logo">
+      <div class="overlay-text">Meze Aydın</div>
+    </div>
 
-  <button id="startButton" onclick="playVideo()">🎬 Hoş Geldiniz - Başla</button>
+    <div class="half right">
+      <img src="logo-right.png" alt="Bounty Bowls" class="logo">
+      <div class="overlay-text">Bounty Bowls</div>
+    </div>
+  </div>
 
-  <script>
-    function playVideo() {
-      const video = document.getElementById('welcomeVideo');
-      const button = document.getElementById('startButton');
-      
-      video.style.display = "block";
-      button.style.display = "none";
-
-      video.muted = false;
-      video.volume = 1;
-
-      const promise = video.play();
-      if (promise !== undefined) {
-        promise.then(() => {
-          console.log("Video başarıyla başladı.");
-        }).catch(error => {
-          alert("Tarayıcı videoyu başlatmayı engelledi. Lütfen tekrar dene.");
-          console.error("Video başlatma hatası:", error);
-        });
-      }
-
-      video.onended = () => window.location.href = "menu.html";
-    }
-  </script>
+  <div class="footer">
+    <h2>Hoş Geldiniz / Welcome</h2>
+    <button class="menu-btn" onclick="window.location.href='menu.html'">
+      Menüye Git / Go to Menu
+    </button>
+  </div>
 
 </body>
 </html>

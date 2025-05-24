@@ -13,6 +13,7 @@
       align-items: center;
       height: 100vh;
       position: relative;
+      overflow: hidden;
     }
 
     video {
@@ -33,6 +34,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      z-index: 2;
     }
   </style>
 </head>
@@ -49,10 +51,23 @@
     function playVideo() {
       const video = document.getElementById('welcomeVideo');
       const button = document.getElementById('startButton');
+      
       video.style.display = "block";
       button.style.display = "none";
+
       video.muted = false;
-      video.play();
+      video.volume = 1;
+
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.then(() => {
+          console.log("Video başarıyla başladı.");
+        }).catch(error => {
+          alert("Tarayıcı videoyu başlatmayı engelledi. Lütfen tekrar dene.");
+          console.error("Video başlatma hatası:", error);
+        });
+      }
+
       video.onended = () => window.location.href = "menu.html";
     }
   </script>

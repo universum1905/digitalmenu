@@ -28,7 +28,8 @@
 
       .header-banner {
       width: 100%;
-      height: auto;
+      max-height: 160px;
+      object-fit: cover;
       display: block;
     }
 
@@ -192,11 +193,11 @@
       opacity: 0.9;
     }
 
-     @media screen and (max-width: 600px) {
-      .category-box {
-        width: 90%;
-        aspect-ratio: 1.6 / 1;
+      @media screen and (max-width: 600px) {
+      .header-banner {
+        max-height: 120px;
       }
+        
       .category-box {
         width: 90%;
         height: auto;

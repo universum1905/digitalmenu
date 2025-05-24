@@ -12,19 +12,50 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      position: relative;
     }
+
     video {
       max-width: 100%;
       max-height: 100vh;
+      display: none;
+    }
+
+    #startButton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      padding: 14px 28px;
+      background-color: #5a3e85;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <video autoplay muted playsinline onended="window.location.href='menu.html'">
+  <video id="welcomeVideo" playsinline>
     <source src="Video/hosgeldiniz.mp4" type="Video/mp4">
     Tarayıcınız video etiketini desteklemiyor.
   </video>
+
+  <button id="startButton" onclick="playVideo()">🎬 Hoş Geldiniz - Başla</button>
+
+  <script>
+    function playVideo() {
+      const video = document.getElementById('welcomeVideo');
+      const button = document.getElementById('startButton');
+      video.style.display = "block";
+      button.style.display = "none";
+      video.muted = false;
+      video.play();
+      video.onended = () => window.location.href = "menu.html";
+    }
+  </script>
 
 </body>
 </html>

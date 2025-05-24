@@ -7,64 +7,39 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       background-color: #fff4e6;
-      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    .welcome-image {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    h1 {
-      margin-top: 30px;
-      font-size: 24px;
-      color: #5a3e85;
-    }
-
-    .menu-button {
-      margin-top: 20px;
-      padding: 14px 28px;
-      background-color: #4CAF50;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
+    .clickable {
       cursor: pointer;
-      transition: background 0.3s;
+      transition: transform 0.2s ease;
+      border-radius: 20px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
     }
 
-    .menu-button:hover {
-      background-color: #388e3c;
+    .clickable:hover {
+      transform: scale(1.02);
     }
 
-    .subtitle {
-      font-size: 14px;
-      color: #555;
-      margin-top: 6px;
+    img {
+      max-width: 90%;
+      width: 600px;
+      height: auto;
+      border-radius: 20px;
     }
   </style>
 </head>
 <body>
 
-  <!-- GÖRSEL BURADA -->
-  <img src="Bilder/A_welcoming_screen_is_divided_into_two_main_sectio.png" alt="Hoş Geldiniz" class="welcome-image" />
-
-  <h1>Hoş Geldiniz</h1>
-  <div class="subtitle">Welcome</div>
-
-  <button class="menu-button" onclick="window.location.href='menu.html'">
-    Menüye Git
-  </button>
-  <div class="subtitle">Go to Menu</div>
+  <div class="clickable" onclick="window.location.href='menu.html'">
+    <img src="A_welcoming_screen_is_divided_into_two_main_sectio.png" alt="Hoş Geldiniz Görseli" />
+  </div>
 
 </body>
 </html>

@@ -18,23 +18,28 @@
       box-sizing: border-box;
     }
 
-    body {
+  body {
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--light-bg);
       color: var(--text-color);
       margin: 0;
-      padding: 0 20px;
+      padding: 0;
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
+      background-color: #fffaf4;
+      padding: 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    header img {
-      height: 70px;
+    header img.header-banner {
+      width: 100%;
+      max-height: 140px;
+      object-fit: cover;
+      display: block;
     }
 
     h1 {

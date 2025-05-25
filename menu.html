@@ -568,38 +568,36 @@ localStorage.setItem("cart", JSON.stringify(cart));
     }
 
     function submitOrder() {
-    const table = document.getElementById("table").value;
-    if (!table || cart.length === 0) {
-      return alert("Lütfen masa seçiniz / Please select a table and add items to cart.");
-    }
-
-    // Nachricht zusammenbauen
-    let message = "*📋 Sipariş / Order*\n";
-    message += `🪑 Masa / Table: ${table}\n\n`;
-
-    const grouped = {};
-    cart.forEach(item => {
-      if (!grouped[item.name]) grouped[item.name] = { ...item, qty: 0 };
-      grouped[item.name].qty++;
-    });
-    for (const name in grouped) {
-      const it = grouped[name];
-      message += `• ${it.name} x${it.qty} – ${it.price * it.qty} ₺\n`;
-    }
-    message += `\n💰 Toplam / Total: ${cart.reduce((sum, i) => sum + i.price, 0)} ₺`;
-
-    // WhatsApp öffnen
-    const whatsappURL = `https://wa.me/905334226393?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, "_blank");
-
-    // Warenkorb zurücksetzen
-    cart = [];
-    updateCart();
-
-    // Dankesmeldung
-    alert("Siparişiniz için teşekkürler! / Thank you for your order!");
+  const table = document.getElementById("table").value;
+  if (!table || cart.length === 0) {
+    return alert("Lütfen masa seçiniz / Please select a table and add items to cart.");
   }
-</script>
 
+  // Nachricht zusammenbauen
+  let message = "*📋 Sipariş / Order*\n";
+  message += `🪑 Masa / Table: ${table}\n\n`;
+
+  const grouped = {};
+  cart.forEach(item => {
+    if (!grouped[item.name]) grouped[item.name] = { ...item, qty: 0 };
+    grouped[item.name].qty++;
+  });
+  for (const name in grouped) {
+    const it = grouped[name];
+    message += `• ${it.name} x${it.qty} – ${it.price * it.qty} ₺\n`;
+  }
+  message += `\n💰 Toplam / Total: ${cart.reduce((sum, i) => sum + i.price, 0)} ₺`;
+
+  // **Erst das Dankeschön**, dann WhatsApp öffnen
+  alert("Siparişiniz için teşekkürler! / Thank you for your order!");
+
+  const whatsappURL = `https://wa.me/905334226393?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, "_blank");
+
+  // Warenkorb zurücksetzen
+  cart = [];
+  updateCart();
+}
+</script>
 </body>
 </html>

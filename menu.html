@@ -567,6 +567,21 @@ cart.length = 0;
 localStorage.removeItem("cart");
 updateCart();
     }
+
+function showCategory(category) {
+      // 1) Direkt nach oben scrollen
+      window.scrollTo({ top: 0, behavior: 'auto' });
+
+      // 2) Hier kommt deine Logik, um die Kategorien umzuschalten.
+      //    Beispiel (falls du einzelne View-Container hast):
+      document.querySelectorAll('#category-view > .category-box, #category-view > .card').forEach(el => {
+        el.style.display = 'none';
+      });
+      document.querySelector(`.category-box[onclick="showCategory('${category}')"], .card.icecekler`).forEach
+      //    oder, falls du eigene Container pro Kategorie hast:
+      // document.getElementById(category).style.display = 'block';
+    }
+    
   </script>
 
 </body>

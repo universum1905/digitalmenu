@@ -5,104 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hoş Geldiniz</title>
   <style>
-    :root {
-      --main-bg: #C4704E; /* daha yumuşak kahverengi */
-      --button-bg: #ffffff;
-      --button-text: #4b2e1f;
-      --heading-color: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
+    body {
       margin: 0;
       padding: 0;
-    }
-
-    body, html {
-      height: 100%;
-      background-color: var(--main-bg);
       font-family: 'Segoe UI', sans-serif;
+      background-color: #b9633f;
+      color: #fff;
+      text-align: center;
     }
 
     .container {
-      height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 20px;
     }
 
     h1 {
-      font-size: 40px;
-      color: var(--heading-color);
-      margin-bottom: 16px;
-      letter-spacing: 1px;
+      font-size: 36px;
+      margin: 10px 0 0;
+    }
+    h2 {
+      font-size: 28px;
+      margin: 0 0 20px;
+      font-weight: 400;
     }
 
     .logos {
       display: flex;
+      justify-content: space-between;
       gap: 40px;
-      align-items: center;
-      margin: 24px 0;
+      margin: 20px 0;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
-    .logos img {
-      max-height: 120px;
-      width: auto;
-    }
-
-    .images {
+    .logo-column {
       display: flex;
-      gap: 24px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 150px;
     }
 
-    .images img {
-      height: 160px;
-      border-radius: 16px;
+    .logo-column img.logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: white;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
     }
 
-    .button-link {
-      background-color: var(--button-bg);
-      color: var(--button-text);
-      padding: 16px 28px;
+    .logo-column img.item {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
       border-radius: 16px;
-      font-size: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s ease, background-color 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .button-link:hover {
-      background-color: #f6f6f6;
-      transform: scale(1.05);
+    .menu-button {
+      margin-top: 40px;
+      background-color: #fff;
+      color: #5a3e2b;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 14px;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .menu-button:hover {
+      background-color: #ffe8a1;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Hoş Geldiniz<br>Welcome</h1>
-
+    <h1>Hoş Geldiniz</h1>
+    <h2>Welcome</h2>
     <div class="logos">
-      <img src="Bilder/logo-left.png" alt="Bounty Bowls Logo" />
-      <img src="Bilder/logo-right.png" alt="Meze Aydın Logo" />
+      <div class="logo-column">
+        <img src="logo-left.png" alt="Bounty Bowls" class="logo" />
+        <img src="freshegebowl.png" alt="Fresh Ege Bowl" class="item" />
+      </div>
+      <div class="logo-column">
+        <img src="logo-right.png" alt="Meze Aydın" class="logo" />
+        <img src="Atom.png" alt="Atom Mezesi" class="item" />
+      </div>
     </div>
-
-    <div class="images">
-      <img src="Bilder/freshegebowl.png" alt="Fresh Bowl" />
-      <img src="Bilder/Atom.png" alt="Yoğurt Meze" />
-    </div>
-
-    <a class="button-link" href="menu.html">Menüye Git / Go to Menu</a>
+    <button class="menu-button" onclick="window.location.href='menu.html'">Menüye Git / Go to Menu</button>
   </div>
 </body>
 </html>

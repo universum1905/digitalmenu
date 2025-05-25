@@ -201,11 +201,18 @@
       opacity: 0.9;
     }
 
+      /* … ganz oben deine normalen Styles … */
+
+    button.select-btn:hover,
+    button.back-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* responsive Regeln */
     @media screen and (max-width: 600px) {
       .header-banner {
         max-height: 140px;
       }
-        
       .category-box {
         width: 90%;
         max-width: none;
@@ -221,7 +228,9 @@
       .product-bottom {
         flex-wrap: wrap;
       }
-    
+    } /* ← Hier schließen! */
+
+    /* Header-Styles dürfen jetzt wieder außerhalb stehen */
     .header {
       display: flex;
       align-items: center;
@@ -235,7 +244,7 @@
       gap: 20px;
     }
     .header .logos img {
-      height: 60px; /* Höhe der Logos nach Bedarf anpassen */
+      height: 60px;
       width: auto;
     }
     .header .title {
@@ -243,6 +252,7 @@
       font-size: 1.8rem;
       font-weight: bold;
     }
+
     
     
     
@@ -260,13 +270,13 @@
     <div class="title">MENÜ / MENU</div>
   </header>
     
-  </header>
+  
 
-  <div id="back-button-container" style="display:none; margin: 15px 0 10px 0; padding-left: 10px;">
+  <div id="back-button-container" style="display:none;…">
     <button class="back-btn" onclick="goBack()">⬅ Geri / Back</button>
   </div>
 
- <div class="categories">
+ <div id="category-view" class="categories">
     <div class="category-box" onclick="showCategory('bounty')">
       <img src="Bilder/freshegebowl.png" alt="Bounty Bowls" />
       <div class="category-title">🥗 Bounty Bowls</div>
@@ -294,7 +304,7 @@
   <div id="products"></div>
 
   <!-- ganz unten, vor dem Warenkorb -->
-  <div id="back-button-container-bottom" style="display:none; margin: 15px 0 10px 0; padding-left: 10px;">
+  <div id="back-button-container-bottom" style="display:none;…">
     <button class="back-btn" onclick="goBack()">⬅ Geri / Back</button>
   </div>
 

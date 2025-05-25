@@ -69,12 +69,13 @@
     }
 
     .category-box img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-
+  width: 100%;
+  height: 200px;           /* exakt dieselbe Bildhöhe wie bei Meze, Diğer etc. */
+  object-fit: cover;       /* skaliert und schneidet proportional */
+  object-position: top center;  /* zeigt den oberen Bildbereich (Deckel) */
+  display: block;
+  opacity: 0.9;
+}
     .category-title {
       padding: 12px;
       font-size: 18px;
@@ -304,10 +305,10 @@
       <img src="Bilder/manca.png" alt="Meze" />
       <div class="category-title">🍽️ Meze / Appetizer</div>
     </div>
-    <div class="card icecekler">
-  <div class="image-wrapper">
-    <img src="Bilder/cola.png" alt="İçecekler / Drinks">
-  </div>
+    <div class="category-box" onclick="showCategory('icecekler')">
+  <img src="Bilder/cola.png" alt="İçecekler / Drinks" />
+  <div class="category-title">🥤 İçecekler / Drinks</div>
+</div>
   <div class="card-title">🥤 İçecekler / Drinks</div>
 </div>
     <div class="category-box" onclick="showCategory('diger')">

@@ -376,7 +376,7 @@
       <option value="Masa 5 / Table 5">Masa 5 / Table 5</option>
     </select>
     <br/><br/>
-    <button class="send-order-btn" onclick="sendWhatsapp()">📩 Siparişi Gönder <br>Submit Order</button>
+    <button class="send-order-btn" onclick="submitOrder()">📩 Siparişi Gönder <br>Submit Order</button>
   </div>
 
   <script>
@@ -567,15 +567,15 @@ window.onload = function () {
 localStorage.setItem("cart", JSON.stringify(cart));
     }
 
-    function sendWhatsapp() {
-    const table = document.getElementById('table').value;
+    function submitOrder() {
+    const table = document.getElementById("table").value;
     if (!table || cart.length === 0) {
-      return alert('Lütfen masa ve ürün seçiniz / Please select a table and add items to cart.');
+      return alert("Lütfen masa seçiniz / Please select a table and add items to cart.");
     }
 
-    // Bestelltext zusammenbauen
-    let msg = "*📋 Sipariş / Order*\n";
-    msg += `🪑 Masa / Table: ${table}\n\n`;
+    // Nachricht zusammenbauen
+    let message = "*📋 Sipariş / Order*\n";
+    message += `🪑 Masa / Table: ${table}\n\n`;
 
     const grouped = {};
     cart.forEach(item => {
@@ -584,20 +584,20 @@ localStorage.setItem("cart", JSON.stringify(cart));
     });
     for (const name in grouped) {
       const it = grouped[name];
-      msg += `• ${it.name} x${it.qty} – ${it.price * it.qty} ₺\n`;
+      message += `• ${it.name} x${it.qty} – ${it.price * it.qty} ₺\n`;
     }
-    msg += `\n💰 Toplam / Total: ${cart.reduce((sum, i) => sum + i.price, 0)} ₺`;
+    message += `\n💰 Toplam / Total: ${cart.reduce((sum, i) => sum + i.price, 0)} ₺`;
 
     // WhatsApp öffnen
-    const whatsappURL = `https://wa.me/905334226393?text=${encodeURIComponent(msg)}`;
-    window.open(whatsappURL, '_blank');
+    const whatsappURL = `https://wa.me/905334226393?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, "_blank");
 
     // Warenkorb zurücksetzen
     cart = [];
     updateCart();
 
-    // Zweisprachige Dankesmeldung
-    alert('Siparişiniz için teşekkürler! / Thank you for your order!');
+    // Dankesmeldung
+    alert("Siparişiniz için teşekkürler! / Thank you for your order!");
   }
 </script>
 

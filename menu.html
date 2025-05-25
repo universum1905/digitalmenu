@@ -13,128 +13,374 @@
       --card-bg: #ffffff;
       --text-color: #333;
     }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
-      background: var(--light-bg);
+      background-color: var(--light-bg);
       color: var(--text-color);
-      height: 100%; overflow-x: hidden;
     }
-    header img { width: 100%; height: auto; max-height: 200px; object-fit: cover; }
-    main { padding: 10px; overflow-y: auto; }
+
+    .header-banner {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
     h1 {
-      text-align: center; font-size: 24px;
-      background: var(--highlight-color);
+      text-align: center;
+      font-size: 26px;
       color: var(--primary-color);
-      margin: 15px 0;
-      padding: 10px 5px;
-      border-radius: 8px;
-    }
-    .categories {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 15px; margin-bottom: 20px;
-    }
-    .category-box {
-      width: calc(50% - 20px);
-      max-width: 180px;
-      background: var(--card-bg);
+      background-color: var(--highlight-color);
+      padding: 10px;
       border-radius: 12px;
+      margin: 10px 0 30px 0;
+    }
+
+   .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 1000px;
+    }
+
+    .category-box {
+      width: 90%;
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       overflow: hidden;
+      background-color: var(--card-bg);
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
       cursor: pointer;
-      transition: transform 0.2s;
     }
-    .category-box:hover { transform: scale(1.05); }
-    .category-box img { width: 100%; height: 120px; object-fit: cover; }
-    .category-box div { padding: 8px 5px; font-weight: bold; font-size: 14px; }
-    .products { display: none; flex-direction: column; gap: 15px; }
+
+    .category-box:hover {
+      transform: scale(1.02);
+    }
+
+    .category-box img {
+  width: 100%;
+  height: 200px;           /* exakt dieselbe Bildhöhe wie bei Meze, Diğer etc. */
+  object-fit: cover;       /* skaliert und schneidet proportional */
+  object-position: top center;  /* zeigt den oberen Bildbereich (Deckel) */
+  display: block;
+  opacity: 0.9;
+}
+    .category-title {
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #fff9f5;
+      color: #5a3e2b;
+    }
+
+    #back-button-container {
+      display: none;
+      margin: 15px 0 10px 0;
+      padding-left: 10px;
+    }
+
+    .back-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
     .product {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--card-bg); padding: 10px;
-      border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      display: flex;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+      gap: 15px;
+      align-items: center;
+      transition: background-color 0.3s ease;
     }
-    .product img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
-    .details { flex: 1; }
-    .details .name { font-weight: bold; color: var(--primary-color); }
-    .details .ing { font-size: 12px; margin: 3px 0; }
-    .actions {
-      display: flex; flex-direction: column; align-items: flex-end;
-      gap: 5px;
+
+    .product:hover {
+      background-color: #f3f0ff;
     }
-    select, .add-btn { width: 100%; padding: 6px; font-size: 12px; border-radius: 6px; border: 1px solid #ccc; }
-    .add-btn {
-      background: var(--accent-color); color: #fff;
-      border: none; cursor: pointer;
-      transition: background 0.2s;
+
+    .product img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--primary-color);
     }
-    .add-btn:hover { background: #3e8e41; }
-    #cart { background: var(--card-bg); padding: 12px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 20px 0; }
-    #cart h2 { margin-top: 0; color: var(--primary-color); font-size: 18px; }
-    #cart ul { list-style: none; padding: 0; margin: 0 0 10px 0; max-height: 150px; overflow-y: auto; }
-    #cart li { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
-    #cart select { width: 100%; margin-bottom: 10px; }
-    .send-btn {
-      width: 100%; padding: 10px;
-      background: var(--accent-color); color: #fff;
-      border: none; border-radius: 8px;
-      font-size: 16px; cursor: pointer;
-      text-align: center;
+
+    .product-details {
+      flex-grow: 1;
     }
-    .send-btn:hover { background: #3e8e41; }
-    .back { display: none; margin-bottom: 10px; }
-    .back button {
-      background: var(--primary-color);
-      color: #fff; border: none; border-radius: 6px;
-      padding: 6px 10px; font-size: 12px; cursor: pointer;
+
+    .product-name {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: var(--primary-color);
     }
-    @media(max-width: 500px) {
-      .category-box { width: calc(100% - 20px); }
-      .product { flex-direction: column; align-items: flex-start; }
-      .actions { width: 100%; }
+
+    .product-ingredients {
+  margin-bottom: 10px;
+}
+
+    .product-bottom {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;  /* daha ferah */
+  gap: 12px;         /* elemanlar arası boşluk biraz arttı */
+  flex-wrap: wrap;   /* dar ekranda kayma olur ama taşma olmaz */
+}
+
+    .product-bottom select {
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+    .select-btn {
+  background-color: #4CAF50;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  min-width: 130px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  line-height: 1.3;
+  text-align: center;
+  border: none;
+  transition: all 0.2s ease;
+}
+    .select-btn:hover {
+  background-color: #3e8e41;
+  transform: scale(1.03);
+}
+
+
+    .price {
+  font-weight: 600;
+  font-size: 20px;
+  color: #5a3e85;  /* Öne çıkar */
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.currency {
+  font-size: 14px;
+  color: #aaa;
+}
+
+    #cart {
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 30px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
+
+    #cart h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    #cart-items li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    select#table {
+      margin-top: 10px;
+      padding: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    
+      /* … ganz oben deine normalen Styles … */
+
+    .send-order-btn {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 18px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 90%;
+  max-width: 400px;
+  margin: 30px auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .send-order-btn:hover {
+  background-color: #3e8e41;
+  transform: scale(1.02);
+}
+
+    /* responsive Regeln */
+    @media screen and (max-width: 600px) {
+      .header-banner {
+        max-height: 140px;
+      }
+      .category-box {
+        width: 90%;
+        max-width: none;
+      }
+      .product {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .product img {
+        width: 100%;
+        height: auto;
+      }
+      .product-bottom {
+        flex-wrap: wrap;
+      }
+    } /* ← Hier schließen! */
+
+   /* Header-Container */
+    .header {
+      width: 100%;        /* volle Breite */
+      overflow: hidden;   /* falls Bild etwas größer ist */
+    }
+
+    /* Bild skaliert immer auf volle Breite */
+    .header img {
+      width: 100%;
+      height: auto;       /* Seitenverhältnis bleibt erhalten */
+      display: block;     /* entfernt ggf. Weißraum unter dem Bild */
+      max-height: 220px;  /* hier kannst du die Maximalhöhe anpassen */
+      object-fit: cover;  /* füllt den Bereich ggf. komplett */
+    }
+/* Gemeinsame Kartengröße */
+.card {
+  width: 100%;         /* oder euer Grid-Wert */
+  max-width: 300px;    /* Beispiel, passt an euer Layout an */
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Bild-Wrapper – gleiche Höhe wie alle anderen Karten */
+.card .image-wrapper {
+  width: 100%;
+  height: 180px;       /* exakt derselbe Wert wie bei Meze, Diğer etc. */
+  overflow: hidden;
+}
+
+/* Bild-Styles – oben zentriert und zugeschnitten */
+.card .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* füllt den Wrapper proportional */
+  object-position: top center;  /* zeigt automatisch den oberen Bildbereich */
+  display: block;
+}
+
+/* Titel darunter */
+.card .card-title {
+  padding: 12px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+
+    
   </style>
 </head>
 <body>
-  <header><img src="Bilder/header.png" alt="Menü Header"></header>
-  <main>
-    <div class="back" id="btnBack"><button onclick="goBack()">⬅ Geri / Back</button></div>
-    <h1>Meze Aydın Dijital Menü</h1>
-    <div class="categories" id="viewCategories">
-      <div class="category-box" onclick="show('bounty')">
-        <img src="Bilder/freshegebowl.png" alt="Bounty Bowls"><div>🥗 Bounty Bowls</div>
-      </div>
-      <div class="category-box" onclick="show('meze')">
-        <img src="Bilder/manca.png" alt="Meze"><div>🍽️ Meze / Appetizer</div>
-      </div>
-      <div class="category-box" onclick="show('icecekler')">
-        <img src="Bilder/liptonpepsi.png" alt="İçecekler"><div>🥤 İçecekler</div>
-      </div>
-      <div class="category-box" onclick="show('diger')">
-        <img src="Bilder/cigkofte.png" alt="Diğer"><div>🍴 Diğer Lezzetler</div>
-      </div>
-      <div class="category-box" onclick="show('tatli')">
-        <img src="Bilder/kabaktatlisi.png" alt="Tatlı"><div>🍰 Tatlı / Desserts</div>
-      </div>
+
+  <header class="header">
+    <img src="Bilder/header.png" alt="Menü Menu Header">
+  </header>
+
+    
+  
+
+  <div id="back-button-container" style="display:none;…">
+    <button class="back-btn" onclick="goBack()">⬅ Geri / Back</button>
+  </div>
+
+ <div id="category-view" class="categories">
+    <div class="category-box" onclick="showCategory('bounty')">
+      <img src="Bilder/freshegebowl.png" alt="Bounty Bowls" />
+      <div class="category-title">🥗 Bounty Bowls</div>
     </div>
-    <div class="products" id="viewProducts"></div>
-    <div id="cart">
-      <h2>🛒 Sepet / Cart</h2>
-      <ul id="cartList"></ul>
-      <strong>💰 Toplam / Total:</strong> <span id="cartTotal">0</span> ₺
-      <label for="tableSelect">🪑 Masa / Table:</label>
-      <select id="tableSelect">
-        <option value="">-- Masa seçiniz --</option>
-        <option>Masa 1</option><option>Masa 2</option>
-        <option>Masa 3</option><option>Masa 4</option>
-        <option>Masa 5</option>
-      </select>
-      <button class="send-btn" onclick="sendWhatsapp()">📩 Siparişi Gönder</button>
+    <div class="category-box" onclick="showCategory('meze')">
+      <img src="Bilder/manca.png" alt="Meze" />
+      <div class="category-title">🍽️ Meze / Appetizer</div>
     </div>
-  </main>
+    <div class="category-box" onclick="showCategory('icecekler')">
+  <img src="Bilder/liptonpepsi.png" alt="İçecekler / Drinks" />
+  <div class="category-title">🥤 İçecekler / Drinks</div>
+</div>
+     <div class="category-box" onclick="showCategory('diger')">
+      <img src="Bilder/cigkofte.png" alt="Diğer" />
+      <div class="category-title">🍴 Diğer Lezzetler / Other Dishes</div>
+    </div>
+    <div class="category-box" onclick="showCategory('tatli')">
+      <img src="Bilder/kabaktatlisi.png" alt="Tatlı" />
+      <div class="category-title">🍰 Tatlı / Desserts</div>
+    </div>
+  </div>
+
+
+
+  <div id="products"></div>
+
+  <!-- ganz unten, vor dem Warenkorb -->
+  <div id="back-button-container-bottom" style="display:none;…">
+    <button class="back-btn" onclick="goBack()">⬅ Geri / Back</button>
+  </div>
+
+
+  <div id="cart">
+    <h2>🛒 Sepet / Cart</h2>
+    <ul id="cart-items" style="list-style: none; padding: 0;"></ul>
+    <p><strong>💰 Toplam / Total:</strong> <span id="total">0.00</span> ₺</p>
+    <label for="table">Masa / Table:</label>
+    <select id="table">
+      <option value="">-- Lütfen masa seçiniz / Please select table --</option>
+      <option value="Masa 1 / Table 1">Masa 1 / Table 1</option>
+      <option value="Masa 2 / Table 2">Masa 2 / Table 2</option>
+      <option value="Masa 3 / Table 3">Masa 3 / Table 3</option>
+      <option value="Masa 4 / Table 4">Masa 4 / Table 4</option>
+      <option value="Masa 5 / Table 5">Masa 5 / Table 5</option>
+    </select>
+    <br/><br/>
+    <button class="send-order-btn" onclick="submitOrder()">📩 Siparişi Gönder / <br>Submit Order</button>
+  </div>
+
   <script>
-    const data = {
+    const products = {
       bounty: [
 { name: "Fresh Ege Bowl", price: 330, ingredients: "Yeşil salata (green salad), roka (arugula), domates (tomatoes), salatalık (cucumber), kırmızı soğan (red onion), beyaz peynir (white cheese), kruton ekmek (crouton bread), özel sos (special sauce)", img: "Bilder/freshegebowl.png" },
 { name: "Sezar Bowl",    price: 345, ingredients: "Göbek marul (iceberg lettuce), sezar sos (Caesar sauce), kruton ekmek (crouton bread), cherry domates (cherry tomatoes), özel soslu tavuk (chicken with special sauce)", img: "Bilder/sezarbowl.png" },
@@ -241,58 +487,128 @@
 
     let cart = [];
 
-function show(cat) {
-      document.getElementById('viewCategories').style.display = 'none';
-      document.getElementById('btnBack').style.display = 'block';
-      const cont = document.getElementById('viewProducts');
-      cont.innerHTML = '';
-      cont.style.display = 'flex';
-      data[cat].forEach((p,i)=>{
-        const div = document.createElement('div'); div.className='product';
-        div.innerHTML = `<img src="${p.img}" alt="${p.name}"><div class="details">`+
-                        `<div class="name">${p.name}</div>`+
-                        `<div class="ing">${p.ingredients}</div></div>`+
-                        `<div class="actions">`+
-                        `<select id="qty${cat}${i}">${[1,2,3,4,5].map(n=>`<option>${n}</option>`).join('')}</select>`+
-                        `<button class="add-btn" onclick="add('${cat}',${i})">Ekle</button>`+
-                        `<div>${p.price} ₺</div></div>`;
-        cont.appendChild(div);
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+window.onload = function () {
+  const savedCart = localStorage.getItem("cart");
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+    updateCart();
+  }
+};
+
+    function showCategory(cat) {
+    // 1) sofort nach oben scrollen
+    window.scrollTo({ top: 0, behavior: 'auto' });
+
+    // 2) Kategorien-Übersicht ausblenden, Back-Buttons einblenden
+    document.getElementById("category-view").style.display = "none";
+    document.getElementById("back-button-container").style.display = "block";
+    document.getElementById("back-button-container-bottom").style.display = "block";
+
+    // 3) Produkt-Container leeren und befüllen
+    const container = document.getElementById("products");
+    container.innerHTML = "";
+    products[cat].forEach((product, index) => {
+      const qtyId = `qty-${cat}-${index}`;
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <img src="${product.img}" alt="${product.name}" />
+        <div class="product-details">
+          <div class="product-name">${product.name}</div>
+          <div class="product-ingredients">${product.ingredients}</div>
+          <div class="product-bottom">
+            <select id="${qtyId}">
+              ${[1,2,3,4,5].map(i => `<option value="${i}">x${i}</option>`).join('')}
+            </select>
+            <button class="select-btn" onclick='addToCart(${JSON.stringify(product)}, "${qtyId}")'>Sepete Ekle<br>Add to Cart</button>
+            <div class="price">${product.price}<span class="currency"> ₺</span></div>
+
+          </div>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+  }
     function goBack() {
-      document.getElementById('viewProducts').style.display='none';
-      document.getElementById('viewCategories').style.display='flex';
-      document.getElementById('btnBack').style.display='none';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      document.getElementById("category-view").style.display = "flex";
+      document.getElementById("products").innerHTML = "";
+      document.getElementById("back-button-container").style.display = "none";
+      document.getElementById("back-button-container-bottom").style.display = "none";  // neu
     }
-    function add(cat,i) {
-      const qty = +document.getElementById(`qty${cat}${i}`).value;
-      for(let j=0;j<qty;j++) cart.push(data[cat][i]);
+
+    function addToCart(product, qtyId) {
+      const qty = parseInt(document.getElementById(qtyId).value);
+      for (let i = 0; i < qty; i++) {
+        cart.push(product);
+      }
       updateCart();
     }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
     function updateCart() {
-      const list=document.getElementById('cartList'); list.innerHTML='';
-      let sum=0;
-      cart.forEach((it,idx)=>{
-        sum+=it.price;
-        const li=document.createElement('li');
-        li.textContent=`• ${it.name} – ${it.price} ₺`;
-        const rm=document.createElement('span'); rm.textContent='✖'; rm.style.cursor='pointer'; rm.onclick=()=>{cart.splice(idx,1);updateCart()};
-        li.appendChild(rm); list.appendChild(li);
+      const cartList = document.getElementById("cart-items");
+      cartList.innerHTML = "";
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span>• ${item.name} – ${item.price}<span class="currency"> ₺</span></span>
+          <span style="cursor:pointer;" title="Sil / Delete" onclick="removeFromCart(${index})">🗑️</span>
+        `;
+        cartList.appendChild(li);
       });
-      document.getElementById('cartTotal').textContent=sum;
+      document.getElementById("total").textContent = total.toFixed(0);
+localStorage.setItem("cart", JSON.stringify(cart));
     }
-    function sendWhatsapp() {
-      const table=document.getElementById('tableSelect').value;
-      if(!table||cart.length===0) return alert('Lütfen masa ve ürün seçiniz');
-      let msg=`Sipariş Masa:${table}\n`;
-      const grouped={}; cart.forEach(i=>{grouped[i.name]=(grouped[i.name]||{...i,qty:0});grouped[i.name].qty++});
-      for(let key in grouped) msg+=`${key} x${grouped[key].qty}\n`;
-      msg+=`Toplam: ${cart.reduce((a,b)=>a+b.price,0)} ₺`;
-      const url=`https://wa.me/905334226393?text=${encodeURIComponent(msg)}`;
-      window.open(url,'_blank'); cart=[]; updateCart();
+
+    function submitOrder() {
+      const table = document.getElementById("table").value;
+      if (!table) return alert("Lütfen masa seçiniz / Please select a table.");
+      if (cart.length === 0) return alert("Sepet boş / Cart is empty.");
+
+      let message = "*📋 Sipariş / Order (Lütfen mesajı değiştirmeyin / Do not change this message)*\n";
+
+const now = new Date();
+const timestamp = `SIP${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
+
+      
+      message += `*🪑 Masa / Table:* ${table}\n\n`;
+
+      const grouped = {};
+      cart.forEach(item => {
+        if (!grouped[item.name]) grouped[item.name] = { ...item, qty: 0 };
+        grouped[item.name].qty += 1;
+      });
+
+      for (const name in grouped) {
+        const item = grouped[name];
+        message += `• ${item.name} x${item.qty} – ${(item.price * item.qty)} ₺\n`;
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      message += `\n*💶 Toplam / Total:* ${total} ₺`;
+
+      message += `\n🕓 ${timestamp}`;
+
+      const phone = "905334226393";
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
+      window.open(whatsappURL, "_blank");
+
+cart.length = 0;
+localStorage.removeItem("cart");
+updateCart();
     }
+
+
+    
   </script>
+
 </body>
 </html>

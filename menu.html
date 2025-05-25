@@ -221,16 +221,44 @@
       .product-bottom {
         flex-wrap: wrap;
       }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #B9633F;
+      padding: 10px 20px;
     }
+    .header .logos {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .header .logos img {
+      height: 60px; /* Höhe der Logos nach Bedarf anpassen */
+      width: auto;
+    }
+    .header .title {
+      color: #ffffff;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    
+    
+    
   </style>
 </head>
 <body>
 
  
 
-  <header>
-  <img src="Bilder/A_menu_header_design_is_displayed_in_a_digital_ill.png" alt="Menü Başlık" class="header-banner">
-</header>
+ <header class="header">
+    <div class="logos">
+      <img src="logo-left.png" alt="Meze Aydın Logo">
+      <img src="logo-right.png" alt="Bounty Bowls Logo">
+    </div>
+    <div class="title">MENÜ / MENU</div>
+  </header>
 
   <div id="back-button-container" style="display:none; margin: 15px 0 10px 0; padding-left: 10px;">
     <button class="back-btn" onclick="goBack()">⬅ Geri / Back</button>

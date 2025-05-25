@@ -69,9 +69,12 @@
     }
 
     .category-box img {
-  width: 100% !important;
-  height: 150px !important;    /* hier deine Wunsch‐Höhe */
-  object-fit: cover !important;
+  width: 100%;
+  height: 200px;           /* exakt dieselbe Bildhöhe wie bei Meze, Diğer etc. */
+  object-fit: cover;       /* skaliert und schneidet proportional */
+  object-position: top center;  /* zeigt den oberen Bildbereich (Deckel) */
+  display: block;
+  opacity: 0.9;
 }
     .category-title {
       padding: 12px;
@@ -114,10 +117,12 @@
     }
 
     .product img {
-  width: 120px;       /* feste Breite */
-  height: 120px;      /* feste Höhe */
-  object-fit: cover;  /* proportional zuschneiden */
-}
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--primary-color);
+    }
 
     .product-details {
       flex-grow: 1;
@@ -307,19 +312,6 @@
   font-size: 1rem;
 }
 
-    .img-container {
-  width: 140px;
-  height: 140px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-right: 15px;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
     
   </style>
@@ -384,7 +376,7 @@
       <option value="Masa 5 / Table 5">Masa 5 / Table 5</option>
     </select>
     <br/><br/>
-    <button class="send-order-btn" onclick="submitOrder()">📩 Siparişi Gönder <br>Submit Order</button>
+    <button class="send-order-btn" onclick="submitOrder()">📩 Siparişi Gönder / <br>Submit Order</button>
   </div>
 
   <script>
@@ -519,25 +511,21 @@ window.onload = function () {
       const qtyId = `qty-${cat}-${index}`;
       const div = document.createElement("div");
       div.className = "product";
-     div.innerHTML = `
-  <div class="img-container">
-    <img src="${product.img}" alt="${product.name}" />
-  </div>
-  <div class="product-details">
-    <div class="product-name">${product.name}</div>
-    <div class="product-ingredients">${product.ingredients}</div>
-    <div class="product-bottom">
-      <select id="${qtyId}">
-        ${[1,2,3,4,5].map(i => `<option value="${i}">x${i}</option>`).join('')}
-      </select>
-      <button class="select-btn" onclick='addToCart(${JSON.stringify(product)}, "${qtyId}")'>
-        Sepete Ekle<br>Add to Cart
-      </button>
-      <div class="price">${product.price}<span class="currency"> ₺</span></div>
-    </div>
-  </div>
-`;
+      div.innerHTML = `
+        <img src="${product.img}" alt="${product.name}" />
+        <div class="product-details">
+          <div class="product-name">${product.name}</div>
+          <div class="product-ingredients">${product.ingredients}</div>
+          <div class="product-bottom">
+            <select id="${qtyId}">
+              ${[1,2,3,4,5].map(i => `<option value="${i}">x${i}</option>`).join('')}
+            </select>
+            <button class="select-btn" onclick='addToCart(${JSON.stringify(product)}, "${qtyId}")'>Sepete Ekle<br>Add to Cart</button>
+            <div class="price">${product.price}<span class="currency"> ₺</span></div>
 
+          </div>
+        </div>
+      `;
       container.appendChild(div);
     });
   }
@@ -580,43 +568,47 @@ localStorage.setItem("cart", JSON.stringify(cart));
     }
 
     function submitOrder() {
-  const table = document.getElementById("table").value;
-  if (!table) return alert("Lütfen masa seçiniz / Please select a table.");
-  if (cart.length === 0) return alert("Sepet boş / Cart is empty.");
+      const table = document.getElementById("table").value;
+      if (!table) return alert("Lütfen masa seçiniz / Please select a table.");
+      if (cart.length === 0) return alert("Sepet boş / Cart is empty.");
 
-  let message = "*📋 Sipariş / Order (Lütfen mesajı değiştirmeyin / Do not change this message)*\n";
+      let message = "*📋 Sipariş / Order (Lütfen mesajı değiştirmeyin / Do not change this message)*\n";
 
-  const now = new Date();
-  const timestamp = `SIP${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
+const now = new Date();
+const timestamp = `SIP${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
 
-  message += `*🪑 Masa / Table:* ${table}\n\n`;
+      
+      message += `*🪑 Masa / Table:* ${table}\n\n`;
 
-  const grouped = {};
-  cart.forEach(item => {
-    if (!grouped[item.name]) grouped[item.name] = { ...item, qty: 0 };
-    grouped[item.name].qty += 1;
-  });
+      const grouped = {};
+      cart.forEach(item => {
+        if (!grouped[item.name]) grouped[item.name] = { ...item, qty: 0 };
+        grouped[item.name].qty += 1;
+      });
 
-  for (const name in grouped) {
-    const item = grouped[name];
-    message += `• ${item.name} x${item.qty} – ${(item.price * item.qty)} ₺\n`;
-  }
+      for (const name in grouped) {
+        const item = grouped[name];
+        message += `• ${item.name} x${item.qty} – ${(item.price * item.qty)} ₺\n`;
+      }
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-  message += `\n*💶 Toplam / Total:* ${total} ₺`;
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      message += `\n*💶 Toplam / Total:* ${total} ₺`;
 
-  message += `\n🕓 ${timestamp}`;
+      message += `\n🕓 ${timestamp}`;
 
-  const phone = "905334226393";
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
-  window.open(whatsappURL, "_blank");
+      const phone = "905334226393";
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
+      window.open(whatsappURL, "_blank");
 
-  cart.length = 0;
-  localStorage.removeItem("cart");
-  updateCart();
-}
+cart.length = 0;
+localStorage.removeItem("cart");
+updateCart();
+    }
 
-</script>
+
+    
+  </script>
+
 </body>
 </html>

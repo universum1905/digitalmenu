@@ -232,21 +232,24 @@
 
     /* Header-Styles dürfen jetzt wieder außerhalb stehen */
     .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #B9633F;
-      padding: 10px 20px;
-    }
+    display: flex;
+    justify-content: center; /* horizontal zentrieren */
+    align-items: center;     /* vertikal zentrieren (falls Höhe definiert) */
+    padding: 20px 0;         /* oben/unten etwas Abstand */
+    background-color: var(--light-bg); /* optional: Hintergrundfarbe */
+  }
+
     .header .logos {
       display: flex;
       align-items: center;
       gap: 20px;
     }
     .header .logos img {
-      height: 60px;
-      width: auto;
-    }
+    max-width: 300px;  /* Wunschbreite, passt sich bis zu 300px an */
+    width: 80%;        /* alternativ: 80% der Container-Breite */
+    height: auto;      /* Seitenverhältnis beibehalten */
+    display: block;
+  }
     .header .title {
       color: #ffffff;
       font-size: 1.8rem;
@@ -263,11 +266,10 @@
  
 
  <header class="header">
-    <div class="logos">
-      <img src="Bilder/header.png" alt="header">
-      </div>
-    
-  </header>
+  <div class="logos">
+    <img src="Bilder/header.png" alt="header">
+  </div>
+</header>
     
   
 

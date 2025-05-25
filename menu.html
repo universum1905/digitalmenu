@@ -463,35 +463,38 @@ window.onload = function () {
 };
 
     function showCategory(cat) {
-      document.getElementById("category-view").style.display = "none";
-      document.getElementById("back-button-container").style.display = "block";
-      document.getElementById("back-button-container-bottom").style.display = "block";  // neu
+    // 1) sofort nach oben scrollen
+    window.scrollTo({ top: 0, behavior: 'auto' });
 
-      const container = document.getElementById("products");
-      container.innerHTML = "";
+    // 2) Kategorien-Übersicht ausblenden, Back-Buttons einblenden
+    document.getElementById("category-view").style.display = "none";
+    document.getElementById("back-button-container").style.display = "block";
+    document.getElementById("back-button-container-bottom").style.display = "block";
 
-      products[cat].forEach((product, index) => {
-        const qtyId = `qty-${cat}-${index}`;
-        const div = document.createElement("div");
-        div.className = "product";
-        div.innerHTML = `
-          <img src="${product.img}" alt="${product.name}" />
-          <div class="product-details">
-            <div class="product-name">${product.name}</div>
-            <div class="product-ingredients">${product.ingredients}</div>
-            <div class="product-bottom">
-              <select id="${qtyId}">
-                ${[1,2,3,4,5].map(i => `<option value="${i}">x${i}</option>`).join('')}
-              </select>
-              <button class="select-btn" onclick='addToCart(${JSON.stringify(product)}, "${qtyId}")'>➕ Seç</button>
-              <div class="price">${product.price} TL</div>
-            </div>
+    // 3) Produkt-Container leeren und befüllen
+    const container = document.getElementById("products");
+    container.innerHTML = "";
+    products[cat].forEach((product, index) => {
+      const qtyId = `qty-${cat}-${index}`;
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <img src="${product.img}" alt="${product.name}" />
+        <div class="product-details">
+          <div class="product-name">${product.name}</div>
+          <div class="product-ingredients">${product.ingredients}</div>
+          <div class="product-bottom">
+            <select id="${qtyId}">
+              ${[1,2,3,4,5].map(i => `<option value="${i}">x${i}</option>`).join('')}
+            </select>
+            <button class="select-btn" onclick='addToCart(${JSON.stringify(product)}, "${qtyId}")'>➕ Seç</button>
+            <div class="price">${product.price} TL</div>
           </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
+        </div>
+      `;
+      container.appendChild(div);
+    });
+  }
     function goBack() {
       document.getElementById("category-view").style.display = "flex";
       document.getElementById("products").innerHTML = "";
@@ -568,19 +571,7 @@ localStorage.removeItem("cart");
 updateCart();
     }
 
-function showCategory(category) {
-      // 1) Direkt nach oben scrollen
-      window.scrollTo({ top: 0, behavior: 'auto' });
 
-      // 2) Hier kommt deine Logik, um die Kategorien umzuschalten.
-      //    Beispiel (falls du einzelne View-Container hast):
-      document.querySelectorAll('#category-view > .category-box, #category-view > .card').forEach(el => {
-        el.style.display = 'none';
-      });
-      document.querySelector(`.category-box[onclick="showCategory('${category}')"], .card.icecekler`).forEach
-      //    oder, falls du eigene Container pro Kategorie hast:
-      // document.getElementById(category).style.display = 'block';
-    }
     
   </script>
 

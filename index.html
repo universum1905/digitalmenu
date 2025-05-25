@@ -1,90 +1,35 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hoş Geldiniz</title>
   <style>
-    body {
-      background-color: #B9633F;
-      font-family: Arial, sans-serif;
+    html, body {
       margin: 0;
       padding: 0;
-      text-align: center;
-      color: white;
+      height: 100%;
+      overflow: hidden;
     }
 
-    .container {
-      padding: 20px;
-    }
+    .full-screen-button {
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  padding: 0;
+  background: url('Bilder/A_welcoming_screen_is_divided_into_two_main_sectio.png') no-repeat center center;
+  background-size: auto 80vh; /* sadece yükseklik sınırlanır */
+  background-color: #B9633F;
+  background-position: center 25%;   
+  cursor: pointer;
+  display: block;
+}
 
-    h1 {
-      font-size: 36px;
-      margin: 20px 0 0 0;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin: 0 0 30px 0;
-    }
-
-    .logos {
-      display: flex;
-      justify-content: center;
-      gap: 80px;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .logos img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: white;
-      padding: 10px;
-    }
-
-    .images {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
-    .images img {
-      max-width: 200px;
-      border-radius: 12px;
-    }
-
-    .menu-button {
-      background-color: #fdf5ec;
-      color: #5a3e2b;
-      font-size: 22px;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 16px;
-      text-decoration: none;
-      display: inline-block;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hoş Geldiniz</h1>
-    <h2>Welcome</h2>
 
-    <div class="logos">
-      <img src="Bilder/logo-left.png" alt="Bounty Bowls" />
-      <img src="Bilder/logo-right.png" alt="Meze Aydın" />
-    </div>
+  <button class="full-screen-button" onclick="window.location.href='menu.html'"></button>
 
-    <div class="images">
-      <img src="Bilder/freshegebowl.png" alt="Fresh Ege Bowl" />
-      <img src="Bilder/Atom.png" alt="Atom Mezesi" />
-    </div>
-
-    <a href="menu.html" class="menu-button">Menüye Git<br><span style="font-size: 18px; font-weight: normal;">Go to Menu</span></a>
-  </div>
 </body>
 </html>

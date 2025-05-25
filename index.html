@@ -2,34 +2,107 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hoş Geldiniz</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
+    :root {
+      --main-bg: #C4704E; /* daha yumuşak kahverengi */
+      --button-bg: #ffffff;
+      --button-text: #4b2e1f;
+      --heading-color: #ffffff;
     }
 
-    .full-screen-button {
-  width: 100vw;
-  height: 100vh;
-  border: none;
-  padding: 0;
-  background: url('Bilder/A_welcoming_screen_is_divided_into_two_main_sectio.png') no-repeat center center;
-  background-size: auto 80vh; /* sadece yükseklik sınırlanır */
-  background-color: #B9633F;
-  background-position: center 25%;   
-  cursor: pointer;
-  display: block;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body, html {
+      height: 100%;
+      background-color: var(--main-bg);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: var(--heading-color);
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .logos {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin: 24px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .logos img {
+      max-height: 120px;
+      width: auto;
+    }
+
+    .images {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .images img {
+      height: 160px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-link {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      padding: 16px 28px;
+      border-radius: 16px;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    .button-link:hover {
+      background-color: #f6f6f6;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Hoş Geldiniz<br>Welcome</h1>
 
-  <button class="full-screen-button" onclick="window.location.href='menu.html'"></button>
+    <div class="logos">
+      <img src="Bilder/logo-left.png" alt="Bounty Bowls Logo" />
+      <img src="Bilder/logo-right.png" alt="Meze Aydın Logo" />
+    </div>
 
+    <div class="images">
+      <img src="Bilder/freshegebowl.png" alt="Fresh Bowl" />
+      <img src="Bilder/Atom.png" alt="Yoğurt Meze" />
+    </div>
+
+    <a class="button-link" href="menu.html">Menüye Git / Go to Menu</a>
+  </div>
 </body>
 </html>

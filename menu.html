@@ -244,37 +244,39 @@
       max-height: 220px;  /* hier kannst du die Maximalhöhe anpassen */
       object-fit: cover;  /* füllt den Bereich ggf. komplett */
     }
-/* Den Karten-Rahmen nach deinem Design anpassen */
+/* Gemeinsame Kartengröße */
 .card {
+  width: 100%;         /* oder euer Grid-Wert */
+  max-width: 300px;    /* Beispiel, passt an euer Layout an */
+  margin: 0 auto;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Bild-Container mit fixer Höhe */
+/* Bild-Wrapper – gleiche Höhe wie alle anderen Karten */
 .card .image-wrapper {
   width: 100%;
-  height: 180px;          /* hier die gewünschte Kartenhöhe */
+  height: 180px;       /* exakt derselbe Wert wie bei Meze, Diğer etc. */
   overflow: hidden;
 }
 
-/* Bild füllt Container proportional und wird von oben zentriert beschnitten */
+/* Bild-Styles – oben zentriert und zugeschnitten */
 .card .image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* sorgt für „Zuschneiden & Füllen“ */
-  object-position: top;   /* zeigt bevorzugt den oberen Bildteil */
+  object-fit: cover;      /* füllt den Wrapper proportional */
+  object-position: top center;  /* zeigt automatisch den oberen Bildbereich */
   display: block;
 }
 
-/* Titel unter dem Bild */
+/* Titel darunter */
 .card .card-title {
   padding: 12px;
-  font-size: 1rem;
   text-align: center;
+  font-size: 1rem;
 }
-
 
 
     

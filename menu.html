@@ -244,6 +244,40 @@
       max-height: 220px;  /* hier kannst du die Maximalhöhe anpassen */
       object-fit: cover;  /* füllt den Bereich ggf. komplett */
     }
+/* Den Karten-Rahmen nach deinem Design anpassen */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Bild-Container mit fixer Höhe */
+.card .image-wrapper {
+  width: 100%;
+  height: 180px;          /* hier die gewünschte Kartenhöhe */
+  overflow: hidden;
+}
+
+/* Bild füllt Container proportional und wird von oben zentriert beschnitten */
+.card .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* sorgt für „Zuschneiden & Füllen“ */
+  object-position: top;   /* zeigt bevorzugt den oberen Bildteil */
+  display: block;
+}
+
+/* Titel unter dem Bild */
+.card .card-title {
+  padding: 12px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+
+
+    
   </style>
 </head>
 <body>
@@ -268,10 +302,12 @@
       <img src="Bilder/manca.png" alt="Meze" />
       <div class="category-title">🍽️ Meze</div>
     </div>
-    <div class="category-box" onclick="showCategory('icecekler')">
-      <img src="Bilder/cola.png" alt="İçecekler" />
-      <div class="category-title">🥤 İçecekler / Drinks</div>
-    </div>
+    <div class="card icecekler">
+  <div class="image-wrapper">
+    <img src="Bilder/cola.png" alt="İçecekler / Drinks">
+  </div>
+  <div class="card-title">🥤 İçecekler / Drinks</div>
+</div>
     <div class="category-box" onclick="showCategory('diger')">
       <img src="Bilder/cigkofte.png" alt="Diğer" />
       <div class="category-title">🍴 Diğer / Others</div>

@@ -530,6 +530,7 @@ window.onload = function () {
     });
   }
     function goBack() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
       document.getElementById("category-view").style.display = "flex";
       document.getElementById("products").innerHTML = "";
       document.getElementById("back-button-container").style.display = "none";

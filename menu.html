@@ -599,7 +599,10 @@ const timestamp = `SIP${now.getFullYear()}${(now.getMonth()+1).toString().padSta
       const phone = "905334226393";
       const encodedMessage = encodeURIComponent(message);
       const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
-      window.open(whatsappURL, "_blank");
+      window.open(url, '_blank');
+cart = [];
+updateCart();
+alert('Siparişiniz için teşekkürler! / Thank you for your order!');
 
 cart.length = 0;
 localStorage.removeItem("cart");

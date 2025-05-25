@@ -159,11 +159,15 @@
     }
 
     .select-btn {
-      background-color: var(--accent-color);
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
 
     .price {
       font-weight: bold;
@@ -204,10 +208,26 @@
 
       /* … ganz oben deine normalen Styles … */
 
-    button.select-btn:hover,
-    button.back-btn:hover {
-      opacity: 0.9;
-    }
+    .send-order-btn {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 18px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 90%;
+  max-width: 400px;
+  margin: 30px auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .send-order-btn:hover {
+  background-color: #482f6e;
+  transform: scale(1.02);
+}
 
     /* responsive Regeln */
     @media screen and (max-width: 600px) {
@@ -343,7 +363,7 @@
       <option value="Masa 5 / Table 5">Masa 5 / Table 5</option>
     </select>
     <br/><br/>
-    <button class="select-btn" onclick="submitOrder()">📩 Siparişi Gönder / Submit Order</button>
+    <button class="send-order-btn" onclick="submitOrder()">📩 Siparişi Gönder / Submit Order</button>
   </div>
 
   <script>

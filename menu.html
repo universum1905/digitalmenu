@@ -230,46 +230,44 @@
       }
     } /* ← Hier schließen! */
 
-    /* Header-Styles dürfen jetzt wieder außerhalb stehen */
+    /* Header als Flex-Container zentrieren */
     .header {
-    display: flex;
-    justify-content: center; /* horizontal zentrieren */
-    align-items: center;     /* vertikal zentrieren (falls Höhe definiert) */
-    padding: 20px 0;         /* oben/unten etwas Abstand */
-    background-color: var(--light-bg); /* optional: Hintergrundfarbe */
-  }
-
+      display: flex;
+      justify-content: center; /* horizontal zentrieren */
+      align-items: center;     /* vertikal zentrieren */
+      padding: 40px 0;         /* mehr Höhe für einen „größeren“ Look */
+      background-color: var(--light-bg);
+    }
+    /* Wenn du mehrere Logos o. Ä. nebeneinander hast */
     .header .logos {
       display: flex;
       align-items: center;
       gap: 20px;
     }
+    /* Logo-Größe festlegen */
     .header .logos img {
-    max-width: 300px;  /* Wunschbreite, passt sich bis zu 300px an */
-    width: 80%;        /* alternativ: 80% der Container-Breite */
-    height: auto;      /* Seitenverhältnis beibehalten */
-    display: block;
-  }
+      max-height: 180px; /* Logo maximal 180px hoch */
+      width: auto;       /* Seitenverhältnis bleibt erhalten */
+      display: block;
+    }
+    /* Optional: Titel neben dem Logo */
     .header .title {
-      color: #ffffff;
+      margin-left: 20px;
+      color: #fff;
       font-size: 1.8rem;
       font-weight: bold;
     }
-
-    
-    
-    
   </style>
 </head>
 <body>
 
- 
-
- <header class="header">
-  <div class="logos">
-    <img src="Bilder/header.png" alt="header">
-  </div>
-</header>
+  <header class="header">
+    <div class="logos">
+      <img src="Bilder/header.png" alt="header">
+      <!-- Falls du noch einen Text-Titel möchtest, entkommentiere: -->
+      <!-- <span class="title">Menü – Menu</span> -->
+    </div>
+  </header>
     
   
 
